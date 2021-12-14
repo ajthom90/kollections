@@ -1,4 +1,5 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.util.capitalizeDecapitalize.toUpperCaseAsciiOnly
 
 plugins {
     kotlin("multiplatform") version "1.6.10"
@@ -8,7 +9,7 @@ plugins {
 }
 
 group = "dev.ajthom"
-version = "1.0.19"
+version = "1.0.20"
 
 repositories {
     mavenCentral()
@@ -60,9 +61,9 @@ kotlin {
     androidNativeX86()
     macosX64()
     macosArm64()
-    iosArm32()
-    iosArm64()
-    iosX64()
+    ios()
+    watchos()
+    tvos()
     linuxX64()
     linuxArm64()
     linuxArm32Hfp()
@@ -92,3 +93,19 @@ kotlin {
         }
     }
 }
+
+val macPlatformTasks = arrayOf("macosX64", "macosArm64", "iosX64", "iosArm64", "watchosX64", "watchosArm64", "watchosArm32", "tvosX64", "tvosArm64").map { getPublishTaskNameForPlatform(it) }.toTypedArray()
+
+tasks.register("buildAndPublishMac") {
+    dependsOn(*macPlatformTasks)
+}
+
+fun getPublishTaskNameForPlatform(platform: String): String {
+    return "publish${capitalizeFirstLetter(platform)}PublicationToGitHubPackagesRepository"
+}
+
+fun capitalizeFirstLetter(str: String): String {
+    return str.substring(0, 1).toUpperCaseAsciiOnly() + str.substring(1)
+}
+
+//tasks.getByName()
