@@ -16,6 +16,7 @@ interface Table<RowType, ColumnType, ValueType> {
 	fun rowMap(): Map<RowType, Map<ColumnType, ValueType>>
 	fun size(): Int
 	fun values(): Collection<ValueType>
+	fun transpose(): Table<ColumnType, RowType, ValueType>
 }
 
 data class TableCell<R, C, V>(val rowKey: R, val columnKey: C, val value: V)

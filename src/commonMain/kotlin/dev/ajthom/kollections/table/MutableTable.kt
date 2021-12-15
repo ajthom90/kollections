@@ -10,4 +10,6 @@ interface MutableTable<RowType, ColumnType, ValueType>: Table<RowType, ColumnTyp
 	override fun rowKeySet(): MutableSet<RowType>
 	override fun rowMap(): MutableMap<RowType, MutableMap<ColumnType, ValueType>>
 	override fun values(): MutableCollection<ValueType>
+	override fun transpose(): MutableTable<ColumnType, RowType, ValueType>
+	fun asTable(): Table<RowType, ColumnType, ValueType>
 }

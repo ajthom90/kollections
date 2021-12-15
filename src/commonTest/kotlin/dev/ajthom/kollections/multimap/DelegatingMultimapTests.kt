@@ -5,7 +5,7 @@ import kotlin.test.assertTrue
 
 class DelegatingMultimapTests {
 	@Test
-	fun `test that multimap works`() {
+	fun testThatMultimapWorks() {
 		val map = mapOf("a" to listOf("b", "c"), "d" to listOf("e", "f"))
 		val multimap = DelegatingMultimap(map)
 		assertTrue {
@@ -17,7 +17,7 @@ class DelegatingMultimapTests {
 	}
 
 	@Test
-	fun `test that build multimap function works`() {
+	fun testThatBuildMultimapFunctionWorks() {
 		val multimap = buildMultimap<String, String> {
 			put("a", "b")
 			put("a", "c")

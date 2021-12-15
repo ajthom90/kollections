@@ -1,4 +1,3 @@
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.util.capitalizeDecapitalize.toUpperCaseAsciiOnly
 
 plugins {
@@ -9,17 +8,13 @@ plugins {
 }
 
 group = "dev.ajthom"
-version = "1.0.20"
+version = "1.0.21"
 
 repositories {
     mavenCentral()
 }
 
 val dokkaOutputDir = "$buildDir/dokka"
-
-//tasks.getByName<DokkaTask>("dokkaHtml") {
-//    outputDirectory.set(file(dokkaOutputDir))
-//}
 
 fun MavenPom.pomData() {
     inceptionYear.set("2021")
@@ -31,7 +26,7 @@ fun MavenPom.pomData() {
     }
 }
 
-tasks.getByName<DokkaTask>("dokkaHtml") {
+tasks.dokkaHtml {
     outputDirectory.set(file(dokkaOutputDir))
 }
 
@@ -55,6 +50,9 @@ kotlin {
         }
     }
 
+    js {
+        nodejs()
+    }
     androidNativeArm32()
     androidNativeArm64()
     androidNativeX64()
@@ -86,15 +84,16 @@ kotlin {
 
     sourceSets {
         val commonMain by getting
-        val commonTest by getting {
+        getByName("commonTest") {
             dependencies {
+                dependsOn(commonMain)
                 implementation(kotlin("test"))
             }
         }
     }
 }
 
-val macPlatformTasks = arrayOf("macosX64", "macosArm64", "iosX64", "iosArm64", "watchosX64", "watchosArm64", "watchosArm32", "tvosX64", "tvosArm64").map { getPublishTaskNameForPlatform(it) }.toTypedArray()
+val macPlatformTasks = listOf("macosX64", "macosArm64", "iosX64", "iosArm64", "watchosX64", "watchosArm64", "watchosArm32", "tvosX64", "tvosArm64").map { getPublishTaskNameForPlatform(it) }.toTypedArray()
 
 tasks.register("buildAndPublishMac") {
     dependsOn(*macPlatformTasks)
@@ -107,5 +106,3 @@ fun getPublishTaskNameForPlatform(platform: String): String {
 fun capitalizeFirstLetter(str: String): String {
     return str.substring(0, 1).toUpperCaseAsciiOnly() + str.substring(1)
 }
-
-//tasks.getByName()

@@ -28,6 +28,8 @@ object Maps {
 	}
 }
 
+fun <K, V> Map<K, V>?.orEmpty() = this ?: emptyMap()
+
 object ImmutableMap {
 	@JvmStatic
 	fun <K, V> of(): Map<K, V> {
