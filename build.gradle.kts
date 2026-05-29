@@ -1,9 +1,9 @@
-import org.jetbrains.kotlin.util.capitalizeDecapitalize.toUpperCaseAsciiOnly
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("multiplatform") version "1.6.10"
+    kotlin("multiplatform") version "2.3.21"
     `maven-publish`
-    id("org.jetbrains.dokka") version "1.6.0"
+    id("org.jetbrains.dokka") version "2.2.0"
 }
 
 group = "dev.ajthom"
@@ -12,8 +12,6 @@ version = "1.0.22"
 repositories {
     mavenCentral()
 }
-
-val dokkaOutputDir = "$buildDir/dokka"
 
 fun MavenPom.pomData() {
     name.set("kollections")
@@ -40,24 +38,15 @@ fun MavenPom.pomData() {
     }
 }
 
-tasks.dokkaHtml {
-    outputDirectory.set(file(dokkaOutputDir))
-}
-
-val deleteDokkaOutputDirectory by tasks.register<Delete>("deleteDokkaOutputDirectory") {
-    delete(dokkaOutputDir)
-}
-
-val javadocJar = tasks.register<Jar>("javadocJar") {
-    dependsOn(deleteDokkaOutputDirectory, tasks.dokkaHtml)
+val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
-    from(dokkaOutputDir)
+    from(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
 kotlin {
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_1_8)
         }
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
@@ -67,52 +56,64 @@ kotlin {
     js {
         nodejs()
     }
+
     androidNativeArm32()
     androidNativeArm64()
     androidNativeX64()
     androidNativeX86()
-    macosX64()
+
     macosArm64()
-    ios()
-    watchos()
-    tvos()
+
+    iosArm64()
+    iosX64()
+    iosSimulatorArm64()
+
+    watchosArm32()
+    watchosArm64()
+    watchosDeviceArm64()
+    watchosSimulatorArm64()
+
+    tvosArm64()
+    tvosSimulatorArm64()
+
     linuxX64()
     linuxArm64()
-    linuxArm32Hfp()
-    linuxMips32()
-    linuxMipsel32()
-    mingwX64()
-    mingwX86()
 
-    publishing {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/ajthom90/kollections")
-                credentials {
-                    username = (findProperty("gpr.user") as String?) ?: System.getenv("GITHUB_ACTOR")
-                    password = (findProperty("gpr.token") as String?) ?: System.getenv("GITHUB_TOKEN")
-                }
-            }
-        }
-        publications.withType<MavenPublication> {
-            artifact(javadocJar)
-            pom { pomData() }
-        }
-    }
+    mingwX64()
 
     sourceSets {
-        val commonMain by getting
-        getByName("commonTest") {
+        val commonTest by getting {
             dependencies {
-                dependsOn(commonMain)
                 implementation(kotlin("test"))
             }
         }
     }
 }
 
-val macPlatformTasks = listOf("macosX64", "macosArm64", "iosX64", "iosArm64", "watchosX64", "watchosArm64", "watchosArm32", "tvosX64", "tvosArm64").map { getPublishTaskNameForPlatform(it) }.toTypedArray()
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ajthom90/kollections")
+            credentials {
+                username = (findProperty("gpr.user") as String?) ?: System.getenv("GITHUB_ACTOR")
+                password = (findProperty("gpr.token") as String?) ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications.withType<MavenPublication> {
+        artifact(javadocJar)
+        pom { pomData() }
+    }
+}
+
+// Convenience task to publish only the targets that can be built on a macOS host.
+val macPlatformTasks = listOf(
+    "macosArm64",
+    "iosArm64", "iosX64", "iosSimulatorArm64",
+    "watchosArm32", "watchosArm64", "watchosDeviceArm64", "watchosSimulatorArm64",
+    "tvosArm64", "tvosSimulatorArm64",
+).map { getPublishTaskNameForPlatform(it) }.toTypedArray()
 
 tasks.register("buildAndPublishMac") {
     dependsOn(*macPlatformTasks)
@@ -123,5 +124,5 @@ fun getPublishTaskNameForPlatform(platform: String): String {
 }
 
 fun capitalizeFirstLetter(str: String): String {
-    return str.substring(0, 1).toUpperCaseAsciiOnly() + str.substring(1)
+    return str.replaceFirstChar { it.uppercase() }
 }
