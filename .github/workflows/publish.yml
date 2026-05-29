@@ -1,8 +1,7 @@
 name: Publish
 
-# Publishes pre-built artifacts to GitHub Packages so consumers download binaries
-# instead of rebuilding (the JitPack model). Runs when you publish a GitHub Release,
-# or on demand via the Actions tab ("Run workflow").
+# Publishes to Maven Central via the Sonatype Central Portal when you publish a
+# GitHub Release, or on demand from the Actions tab ("Run workflow").
 on:
   release:
     types: [published]
@@ -10,11 +9,8 @@ on:
 
 jobs:
   publish:
-    # macOS host builds every target except linuxMips32/linuxMipsel32 (which need a Linux host).
+    # macOS host can build every target (Apple + JVM/JS + cross-compiled Linux/Windows/Android Native).
     runs-on: macos-latest
-    permissions:
-      contents: read
-      packages: write   # lets the built-in GITHUB_TOKEN publish to this repo's packages
     steps:
       - uses: actions/checkout@v4
 
@@ -27,8 +23,10 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Publish to GitHub Packages
+      - name: Publish to Maven Central
         env:
-          GPR_USER: ${{ github.actor }}
-          GPR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew publish -Pgpr.user="$GPR_USER" -Pgpr.token="$GPR_TOKEN" --stacktrace
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache --stacktrace

@@ -1,46 +1,18 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("multiplatform") version "2.3.21"
-    `maven-publish`
     id("org.jetbrains.dokka") version "2.2.0"
+    id("com.vanniktech.maven.publish") version "0.36.0"
 }
 
-group = "dev.ajthom"
+group = "io.github.ajthom90"
 version = "1.0.22"
 
 repositories {
     mavenCentral()
-}
-
-fun MavenPom.pomData() {
-    name.set("kollections")
-    description.set("Kotlin Multiplatform collection helpers — multimaps, multisets, and tables — inspired by Google Guava.")
-    url.set("https://github.com/ajthom90/kollections")
-    inceptionYear.set("2021")
-    licenses {
-        license {
-            name.set("MIT License")
-            url.set("https://opensource.org/licenses/MIT")
-        }
-    }
-    developers {
-        developer {
-            id.set("ajthom90")
-            name.set("Andrew J. Thom")
-            email.set("ajthom90@gmail.com")
-        }
-    }
-    scm {
-        url.set("https://github.com/ajthom90/kollections")
-        connection.set("scm:git:https://github.com/ajthom90/kollections.git")
-        developerConnection.set("scm:git:ssh://git@github.com/ajthom90/kollections.git")
-    }
-}
-
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-    from(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
 kotlin {
@@ -90,39 +62,42 @@ kotlin {
     }
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ajthom90/kollections")
-            credentials {
-                username = (findProperty("gpr.user") as String?) ?: System.getenv("GITHUB_ACTOR")
-                password = (findProperty("gpr.token") as String?) ?: System.getenv("GITHUB_TOKEN")
+mavenPublishing {
+    configure(
+        KotlinMultiplatform(
+            javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationHtml"),
+            sourcesJar = true,
+        )
+    )
+
+    publishToMavenCentral()
+    signAllPublications()
+
+    coordinates("io.github.ajthom90", "kollections", "1.0.22")
+
+    pom {
+        name.set("kollections")
+        description.set("Kotlin Multiplatform collection helpers — multimaps, multisets, and tables — inspired by Google Guava.")
+        url.set("https://github.com/ajthom90/kollections")
+        inceptionYear.set("2021")
+        licenses {
+            license {
+                name.set("MIT License")
+                url.set("https://opensource.org/licenses/MIT")
+                distribution.set("repo")
             }
         }
+        developers {
+            developer {
+                id.set("ajthom90")
+                name.set("Andrew J. Thom")
+                url.set("https://github.com/ajthom90")
+            }
+        }
+        scm {
+            url.set("https://github.com/ajthom90/kollections")
+            connection.set("scm:git:https://github.com/ajthom90/kollections.git")
+            developerConnection.set("scm:git:ssh://git@github.com/ajthom90/kollections.git")
+        }
     }
-    publications.withType<MavenPublication> {
-        artifact(javadocJar)
-        pom { pomData() }
-    }
-}
-
-// Convenience task to publish only the targets that can be built on a macOS host.
-val macPlatformTasks = listOf(
-    "macosArm64",
-    "iosArm64", "iosX64", "iosSimulatorArm64",
-    "watchosArm32", "watchosArm64", "watchosDeviceArm64", "watchosSimulatorArm64",
-    "tvosArm64", "tvosSimulatorArm64",
-).map { getPublishTaskNameForPlatform(it) }.toTypedArray()
-
-tasks.register("buildAndPublishMac") {
-    dependsOn(*macPlatformTasks)
-}
-
-fun getPublishTaskNameForPlatform(platform: String): String {
-    return "publish${capitalizeFirstLetter(platform)}PublicationToGitHubPackagesRepository"
-}
-
-fun capitalizeFirstLetter(str: String): String {
-    return str.replaceFirstChar { it.uppercase() }
 }

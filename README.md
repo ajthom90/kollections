@@ -17,27 +17,18 @@ Android Native).
 
 ## Installation
 
-Artifacts are published to **GitHub Packages** under `dev.ajthom:kollections`. GitHub Packages
-requires authentication even for public packages, so add the repository with credentials backed by a
-[personal access token](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages#authenticating-to-github-packages)
-that has the `read:packages` scope.
+Artifacts are published to **Maven Central** under `io.github.ajthom90:kollections` — no
+authentication required to consume.
 
 `build.gradle.kts`:
 
 ```kotlin
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://maven.pkg.github.com/ajthom90/kollections")
-        credentials {
-            username = providers.gradleProperty("gpr.user").orNull ?: System.getenv("GITHUB_ACTOR")
-            password = providers.gradleProperty("gpr.token").orNull ?: System.getenv("GITHUB_TOKEN")
-        }
-    }
 }
 
 dependencies {
-    implementation("dev.ajthom:kollections:1.0.22")
+    implementation("io.github.ajthom90:kollections:1.0.22")
 }
 ```
 
@@ -116,11 +107,16 @@ maybeMap.orEmpty()                        // {}
 ./gradlew jvmTest      # JVM tests only
 ```
 
-Publishing to GitHub Packages expects `GITHUB_ACTOR` and `GITHUB_TOKEN` (a token with the
-`write:packages` scope) in the environment:
+Releases go to Maven Central via the Sonatype Central Portal. Publishing is automated by
+[`.github/workflows/publish.yml`](.github/workflows/publish.yml): create a GitHub Release and it runs
+`./gradlew publishAndReleaseToMavenCentral` using the `MAVEN_CENTRAL_*` and `SIGNING_*` repository
+secrets. To publish locally instead, provide the same values as Gradle properties:
 
 ```bash
-GITHUB_ACTOR=ajthom90 GITHUB_TOKEN=*** ./gradlew publish
+./gradlew publishAndReleaseToMavenCentral \
+  -PmavenCentralUsername=*** -PmavenCentralPassword=*** \
+  -PsigningInMemoryKey="$(gpg --armor --export-secret-keys <KEY_ID>)" \
+  -PsigningInMemoryKeyPassword=***
 ```
 
 ## License
