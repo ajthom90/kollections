@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.util.capitalizeDecapitalize.toUpperCaseAsciiOnly
 plugins {
     kotlin("multiplatform") version "1.6.10"
     `maven-publish`
-    id("net.linguica.maven-settings") version "0.5"
     id("org.jetbrains.dokka") version "1.6.0"
 }
 
@@ -17,12 +16,27 @@ repositories {
 val dokkaOutputDir = "$buildDir/dokka"
 
 fun MavenPom.pomData() {
+    name.set("kollections")
+    description.set("Kotlin Multiplatform collection helpers — multimaps, multisets, and tables — inspired by Google Guava.")
+    url.set("https://github.com/ajthom90/kollections")
     inceptionYear.set("2021")
+    licenses {
+        license {
+            name.set("MIT License")
+            url.set("https://opensource.org/licenses/MIT")
+        }
+    }
     developers {
         developer {
-            email.set("ajthom90@gmail.com")
+            id.set("ajthom90")
             name.set("Andrew J. Thom")
+            email.set("ajthom90@gmail.com")
         }
+    }
+    scm {
+        url.set("https://github.com/ajthom90/kollections")
+        connection.set("scm:git:https://github.com/ajthom90/kollections.git")
+        developerConnection.set("scm:git:ssh://git@github.com/ajthom90/kollections.git")
     }
 }
 
@@ -73,12 +87,17 @@ kotlin {
     publishing {
         repositories {
             maven {
-                url = uri("https://maven.pkg.github.com/ajthom90/kollections")
                 name = "GitHubPackages"
-                authentication {
-                    create<BasicAuthentication>("basic")
+                url = uri("https://maven.pkg.github.com/ajthom90/kollections")
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
+        }
+        publications.withType<MavenPublication> {
+            artifact(javadocJar)
+            pom { pomData() }
         }
     }
 

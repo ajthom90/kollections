@@ -49,6 +49,9 @@ cmake-build-*/
 # File-based project format
 *.iws
 
+# JetBrains IDE project files (do not track in this repo)
+.idea/
+
 # IntelliJ
 out/
 
