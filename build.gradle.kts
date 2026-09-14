@@ -8,7 +8,7 @@ plugins {
     kotlin("multiplatform") version "2.4.20"
     id("org.jetbrains.dokka") version "2.2.0"
     id("com.vanniktech.maven.publish") version "0.36.0"
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.18.1"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.18.2"
     id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
 }
 
