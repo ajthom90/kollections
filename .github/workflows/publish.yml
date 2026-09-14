@@ -12,7 +12,7 @@ jobs:
     # macOS host can build every target (Apple + JVM/JS/Wasm + cross-compiled Linux/Windows/Android Native).
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # The release tag (e.g. v2.0.0) must match VERSION_NAME in gradle.properties so the
       # published artifact and the GitHub Release can never disagree about the version.
