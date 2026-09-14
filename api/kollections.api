@@ -1,6 +1,8 @@
 public abstract interface class dev/ajthom/kollections/bimap/BiMap : java/util/Map, kotlin/jvm/internal/markers/KMappedMarker {
 	public abstract fun getValues ()Ljava/util/Set;
 	public abstract fun inverse ()Ldev/ajthom/kollections/bimap/BiMap;
+	public synthetic fun values ()Ljava/util/Collection;
+	public fun values ()Ljava/util/Set;
 }
 
 public final class dev/ajthom/kollections/bimap/BiMapsKt {
@@ -39,11 +41,16 @@ public final class dev/ajthom/kollections/bimap/HashBiMap : dev/ajthom/kollectio
 }
 
 public abstract interface class dev/ajthom/kollections/bimap/MutableBiMap : dev/ajthom/kollections/bimap/BiMap, java/util/Map, kotlin/jvm/internal/markers/KMutableMap {
+	public fun entrySet ()Ljava/util/Set;
 	public abstract fun forcePut (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	public abstract fun getEntries ()Ljava/util/Set;
 	public abstract fun getKeys ()Ljava/util/Set;
 	public abstract fun getValues ()Ljava/util/Set;
+	public synthetic fun inverse ()Ldev/ajthom/kollections/bimap/BiMap;
 	public abstract fun inverse ()Ldev/ajthom/kollections/bimap/MutableBiMap;
+	public fun keySet ()Ljava/util/Set;
+	public synthetic fun values ()Ljava/util/Collection;
+	public fun values ()Ljava/util/Set;
 }
 
 public final class dev/ajthom/kollections/iterable/Iterables {
@@ -211,6 +218,7 @@ public final class dev/ajthom/kollections/multimap/LinkedHashSetMultimap : dev/a
 
 public abstract interface class dev/ajthom/kollections/multimap/ListMultimap : dev/ajthom/kollections/multimap/Multimap {
 	public abstract fun asMap ()Ljava/util/Map;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
 	public abstract fun get (Ljava/lang/Object;)Ljava/util/List;
 	public abstract fun getEntries ()Ljava/util/Set;
 	public abstract fun getValues ()Ljava/util/Collection;
@@ -312,10 +320,13 @@ public final class dev/ajthom/kollections/multimap/MultimapsKt {
 
 public abstract interface class dev/ajthom/kollections/multimap/MutableListMultimap : dev/ajthom/kollections/multimap/ListMultimap, dev/ajthom/kollections/multimap/MutableMultimap {
 	public abstract fun asMap ()Ljava/util/Map;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
 	public abstract fun get (Ljava/lang/Object;)Ljava/util/List;
 	public abstract fun getEntries ()Ljava/util/Set;
 	public abstract fun getValues ()Ljava/util/Collection;
+	public synthetic fun remove (Ljava/lang/Object;)Ljava/util/Collection;
 	public abstract fun remove (Ljava/lang/Object;)Ljava/util/List;
+	public synthetic fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Collection;
 	public abstract fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/List;
 }
 
@@ -347,10 +358,13 @@ public final class dev/ajthom/kollections/multimap/MutableMultimap$DefaultImpls 
 
 public abstract interface class dev/ajthom/kollections/multimap/MutableSetMultimap : dev/ajthom/kollections/multimap/MutableMultimap, dev/ajthom/kollections/multimap/SetMultimap {
 	public abstract fun asMap ()Ljava/util/Map;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
 	public abstract fun get (Ljava/lang/Object;)Ljava/util/Set;
 	public abstract fun getEntries ()Ljava/util/Set;
 	public abstract fun getValues ()Ljava/util/Collection;
+	public synthetic fun remove (Ljava/lang/Object;)Ljava/util/Collection;
 	public abstract fun remove (Ljava/lang/Object;)Ljava/util/Set;
+	public synthetic fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Collection;
 	public abstract fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Set;
 }
 
@@ -360,6 +374,7 @@ public final class dev/ajthom/kollections/multimap/MutableSetMultimap$DefaultImp
 
 public abstract interface class dev/ajthom/kollections/multimap/SetMultimap : dev/ajthom/kollections/multimap/Multimap {
 	public abstract fun asMap ()Ljava/util/Map;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
 	public abstract fun get (Ljava/lang/Object;)Ljava/util/Set;
 	public abstract fun getEntries ()Ljava/util/Set;
 	public abstract fun getValues ()Ljava/util/Collection;
@@ -399,6 +414,7 @@ public abstract interface class dev/ajthom/kollections/multiset/Multiset : java/
 	public abstract fun getElementSet ()Ljava/util/Set;
 	public abstract fun getEntries ()Ljava/util/Set;
 	public abstract fun getSize ()I
+	public fun size ()I
 }
 
 public final class dev/ajthom/kollections/multiset/Multiset$Entry {
@@ -510,6 +526,7 @@ public abstract interface class dev/ajthom/kollections/table/MutableTable : dev/
 	public abstract fun rowKeySet ()Ljava/util/Set;
 	public abstract fun rowMap ()Ljava/util/Map;
 	public abstract fun transpose ()Ldev/ajthom/kollections/table/MutableTable;
+	public synthetic fun transpose ()Ldev/ajthom/kollections/table/Table;
 	public abstract fun values ()Ljava/util/Collection;
 }
 
