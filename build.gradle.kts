@@ -1,21 +1,27 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.SourcesJar
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("multiplatform") version "2.3.21"
     id("org.jetbrains.dokka") version "2.2.0"
     id("com.vanniktech.maven.publish") version "0.36.0"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.18.1"
+    id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
 }
 
-group = "io.github.ajthom90"
-version = "1.0.22"
+group = property("GROUP") as String
+version = property("VERSION_NAME") as String
 
 repositories {
     mavenCentral()
 }
 
 kotlin {
+    explicitApi()
+
     jvm {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_1_8)
@@ -26,6 +32,11 @@ kotlin {
     }
 
     js {
+        nodejs()
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
         nodejs()
     }
 
@@ -66,18 +77,18 @@ mavenPublishing {
     configure(
         KotlinMultiplatform(
             javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationHtml"),
-            sourcesJar = true,
-        )
+            sourcesJar = SourcesJar.Sources(),
+        ),
     )
 
     publishToMavenCentral()
     signAllPublications()
 
-    coordinates("io.github.ajthom90", "kollections", "1.0.22")
-
     pom {
         name.set("kollections")
-        description.set("Kotlin Multiplatform collection helpers — multimaps, multisets, and tables — inspired by Google Guava.")
+        description.set(
+            "Kotlin Multiplatform collection helpers (multimaps, multisets, tables, bimaps) inspired by Google Guava.",
+        )
         url.set("https://github.com/ajthom90/kollections")
         inceptionYear.set("2021")
         licenses {

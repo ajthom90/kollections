@@ -82,3 +82,6 @@ fabric.properties
 # Gradle build cache and output
 .gradle/
 build/
+
+# macOS
+.DS_Store
