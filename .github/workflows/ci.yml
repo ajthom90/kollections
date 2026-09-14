@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    # macOS host can build the Apple targets in addition to JVM/JS/Linux/Windows.
+    # macOS host can build the Apple targets in addition to JVM/JS/Wasm/Linux/Windows.
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,5 +22,16 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # `build` runs compilation and tests for every target plus apiCheck and ktlintCheck.
       - name: Build
         run: ./gradlew build --stacktrace
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            build/reports/tests
+            build/test-results
+          if-no-files-found: ignore

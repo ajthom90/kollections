@@ -1,0 +1,582 @@
+public abstract interface class dev/ajthom/kollections/bimap/BiMap : java/util/Map, kotlin/jvm/internal/markers/KMappedMarker {
+	public abstract fun getValues ()Ljava/util/Set;
+	public abstract fun inverse ()Ldev/ajthom/kollections/bimap/BiMap;
+}
+
+public final class dev/ajthom/kollections/bimap/BiMapsKt {
+	public static final fun biMapOf ([Lkotlin/Pair;)Ldev/ajthom/kollections/bimap/BiMap;
+	public static final fun emptyBiMap ()Ldev/ajthom/kollections/bimap/BiMap;
+	public static final fun mutableBiMapOf ([Lkotlin/Pair;)Ldev/ajthom/kollections/bimap/MutableBiMap;
+	public static final fun toBiMap (Ljava/util/Map;)Ldev/ajthom/kollections/bimap/BiMap;
+	public static final fun toMutableBiMap (Ljava/util/Map;)Ldev/ajthom/kollections/bimap/MutableBiMap;
+}
+
+public final class dev/ajthom/kollections/bimap/HashBiMap : dev/ajthom/kollections/bimap/MutableBiMap {
+	public fun <init> ()V
+	public fun clear ()V
+	public fun containsKey (Ljava/lang/Object;)Z
+	public fun containsValue (Ljava/lang/Object;)Z
+	public final fun entrySet ()Ljava/util/Set;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun forcePut (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun get (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun getEntries ()Ljava/util/Set;
+	public fun getKeys ()Ljava/util/Set;
+	public fun getSize ()I
+	public fun getValues ()Ljava/util/Set;
+	public fun hashCode ()I
+	public synthetic fun inverse ()Ldev/ajthom/kollections/bimap/BiMap;
+	public fun inverse ()Ldev/ajthom/kollections/bimap/MutableBiMap;
+	public fun isEmpty ()Z
+	public final fun keySet ()Ljava/util/Set;
+	public fun put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun putAll (Ljava/util/Map;)V
+	public fun remove (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun size ()I
+	public fun toString ()Ljava/lang/String;
+	public synthetic fun values ()Ljava/util/Collection;
+	public final fun values ()Ljava/util/Set;
+}
+
+public abstract interface class dev/ajthom/kollections/bimap/MutableBiMap : dev/ajthom/kollections/bimap/BiMap, java/util/Map, kotlin/jvm/internal/markers/KMutableMap {
+	public abstract fun forcePut (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getKeys ()Ljava/util/Set;
+	public abstract fun getValues ()Ljava/util/Set;
+	public abstract fun inverse ()Ldev/ajthom/kollections/bimap/MutableBiMap;
+}
+
+public final class dev/ajthom/kollections/iterable/Iterables {
+	public static final field INSTANCE Ldev/ajthom/kollections/iterable/Iterables;
+	public static final fun getFirst (Ljava/lang/Iterable;)Ljava/lang/Object;
+	public static final fun getFirst (Ljava/lang/Iterable;Ljava/lang/Object;)Ljava/lang/Object;
+	public static final fun getLast (Ljava/lang/Iterable;)Ljava/lang/Object;
+	public static final fun getLast (Ljava/lang/Iterable;Ljava/lang/Object;)Ljava/lang/Object;
+	public static final fun only (Ljava/lang/Iterable;)Ljava/lang/Object;
+	public static final fun only (Ljava/lang/Iterable;Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/ajthom/kollections/iterable/Iterators {
+	public static final field INSTANCE Ldev/ajthom/kollections/iterable/Iterators;
+	public static final fun getFirst (Ljava/util/Iterator;)Ljava/lang/Object;
+	public static final fun getFirst (Ljava/util/Iterator;Ljava/lang/Object;)Ljava/lang/Object;
+	public static final fun getLast (Ljava/util/Iterator;)Ljava/lang/Object;
+	public static final fun getLast (Ljava/util/Iterator;Ljava/lang/Object;)Ljava/lang/Object;
+	public static final fun only (Ljava/util/Iterator;)Ljava/lang/Object;
+	public static final fun only (Ljava/util/Iterator;Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/ajthom/kollections/list/ImmutableList {
+	public static final field INSTANCE Ldev/ajthom/kollections/list/ImmutableList;
+	public static final fun copyOf (Ljava/lang/Iterable;)Ljava/util/List;
+	public static final fun of ()Ljava/util/List;
+	public static final fun of (Ljava/lang/Object;)Ljava/util/List;
+	public static final fun of ([Ljava/lang/Object;)Ljava/util/List;
+}
+
+public final class dev/ajthom/kollections/map/ImmutableMap {
+	public static final field INSTANCE Ldev/ajthom/kollections/map/ImmutableMap;
+	public static final fun copyOf (Ljava/util/Map;)Ljava/util/Map;
+	public static final fun of ()Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+	public static final fun of (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+}
+
+public abstract interface class dev/ajthom/kollections/map/MapDifference {
+	public abstract fun getAreEqual ()Z
+	public abstract fun getEntriesDiffering ()Ljava/util/Map;
+	public abstract fun getEntriesInCommon ()Ljava/util/Map;
+	public abstract fun getEntriesOnlyOnLeft ()Ljava/util/Map;
+	public abstract fun getEntriesOnlyOnRight ()Ljava/util/Map;
+}
+
+public final class dev/ajthom/kollections/map/MapDifference$ValueDifference {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/Object;)Ldev/ajthom/kollections/map/MapDifference$ValueDifference;
+	public static synthetic fun copy$default (Ldev/ajthom/kollections/map/MapDifference$ValueDifference;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Ldev/ajthom/kollections/map/MapDifference$ValueDifference;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLeftValue ()Ljava/lang/Object;
+	public final fun getRightValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/ajthom/kollections/map/Maps {
+	public static final field INSTANCE Ldev/ajthom/kollections/map/Maps;
+	public static final fun difference (Ljava/util/Map;Ljava/util/Map;)Ldev/ajthom/kollections/map/MapDifference;
+}
+
+public final class dev/ajthom/kollections/map/MapsKt {
+	public static final fun difference (Ljava/util/Map;Ljava/util/Map;)Ldev/ajthom/kollections/map/MapDifference;
+	public static final fun orEmpty (Ljava/util/Map;)Ljava/util/Map;
+}
+
+public abstract class dev/ajthom/kollections/multimap/AbstractMultimap : dev/ajthom/kollections/multimap/Multimap {
+	public fun <init> ()V
+	public abstract fun asMap ()Ljava/util/Map;
+	public fun containsEntry (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun containsKey (Ljava/lang/Object;)Z
+	public fun containsValue (Ljava/lang/Object;)Z
+	public fun equals (Ljava/lang/Object;)Z
+	public fun forEach (Lkotlin/jvm/functions/Function2;)V
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public fun getEntries ()Ljava/util/Set;
+	public fun getFlatValues ()Ljava/util/Collection;
+	public fun getKeys ()Ljava/util/Set;
+	public fun getSize ()I
+	public fun getValues ()Ljava/util/Collection;
+	public fun hashCode ()I
+	public fun isEmpty ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class dev/ajthom/kollections/multimap/AbstractMutableMultimap : dev/ajthom/kollections/multimap/AbstractMultimap, dev/ajthom/kollections/multimap/MutableMultimap {
+	public fun <init> (Ljava/util/Map;)V
+	public fun asMap ()Ljava/util/Map;
+	public fun clear ()V
+	public fun containsEntry (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun containsKey (Ljava/lang/Object;)Z
+	public fun containsValue (Ljava/lang/Object;)Z
+	protected abstract fun createCollection ()Ljava/util/Collection;
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	protected final fun getBacking ()Ljava/util/Map;
+	public fun getEntries ()Ljava/util/Set;
+	public fun getFlatValues ()Ljava/util/Collection;
+	public fun getKeys ()Ljava/util/Set;
+	public fun getSize ()I
+	public fun getValues ()Ljava/util/Collection;
+	public fun isEmpty ()Z
+	public fun put (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun putAll (Ldev/ajthom/kollections/multimap/Multimap;)Z
+	public fun putAll (Ljava/lang/Object;Ljava/lang/Iterable;)Z
+	public fun putAll (Ljava/util/Map;)Z
+	public fun remove (Ljava/lang/Object;)Ljava/util/Collection;
+	public fun remove (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Collection;
+}
+
+public final class dev/ajthom/kollections/multimap/DelegatingListMultimap : dev/ajthom/kollections/multimap/AbstractMultimap, dev/ajthom/kollections/multimap/ListMultimap {
+	public fun <init> (Ljava/util/Map;)V
+	public fun asMap ()Ljava/util/Map;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public fun get (Ljava/lang/Object;)Ljava/util/List;
+}
+
+public class dev/ajthom/kollections/multimap/DelegatingMutableListMultimap : dev/ajthom/kollections/multimap/AbstractMutableMultimap, dev/ajthom/kollections/multimap/MutableListMultimap {
+	public fun <init> (Ljava/util/Map;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Ljava/util/Map;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun createCollection ()Ljava/util/Collection;
+	protected fun createCollection ()Ljava/util/List;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public fun get (Ljava/lang/Object;)Ljava/util/List;
+	public synthetic fun remove (Ljava/lang/Object;)Ljava/util/List;
+	public synthetic fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/List;
+}
+
+public class dev/ajthom/kollections/multimap/DelegatingMutableSetMultimap : dev/ajthom/kollections/multimap/AbstractMutableMultimap, dev/ajthom/kollections/multimap/MutableSetMultimap {
+	public fun <init> (Ljava/util/Map;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Ljava/util/Map;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun createCollection ()Ljava/util/Collection;
+	protected fun createCollection ()Ljava/util/Set;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public fun get (Ljava/lang/Object;)Ljava/util/Set;
+	public synthetic fun remove (Ljava/lang/Object;)Ljava/util/Set;
+	public synthetic fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Set;
+}
+
+public final class dev/ajthom/kollections/multimap/DelegatingSetMultimap : dev/ajthom/kollections/multimap/AbstractMultimap, dev/ajthom/kollections/multimap/SetMultimap {
+	public fun <init> (Ljava/util/Map;)V
+	public fun asMap ()Ljava/util/Map;
+	public synthetic fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public fun get (Ljava/lang/Object;)Ljava/util/Set;
+}
+
+public final class dev/ajthom/kollections/multimap/LinkedHashListMultimap : dev/ajthom/kollections/multimap/DelegatingMutableListMultimap {
+	public fun <init> ()V
+}
+
+public final class dev/ajthom/kollections/multimap/LinkedHashSetMultimap : dev/ajthom/kollections/multimap/DelegatingMutableSetMultimap {
+	public fun <init> ()V
+}
+
+public abstract interface class dev/ajthom/kollections/multimap/ListMultimap : dev/ajthom/kollections/multimap/Multimap {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/List;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getValues ()Ljava/util/Collection;
+}
+
+public final class dev/ajthom/kollections/multimap/ListMultimap$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/jvm/functions/Function2;)V
+}
+
+public abstract interface class dev/ajthom/kollections/multimap/Multimap {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun containsEntry (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public abstract fun containsKey (Ljava/lang/Object;)Z
+	public abstract fun containsValue (Ljava/lang/Object;)Z
+	public fun forEach (Lkotlin/jvm/functions/Function2;)V
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getFlatValues ()Ljava/util/Collection;
+	public abstract fun getKeys ()Ljava/util/Set;
+	public abstract fun getSize ()I
+	public abstract fun getValues ()Ljava/util/Collection;
+	public abstract fun isEmpty ()Z
+}
+
+public final class dev/ajthom/kollections/multimap/Multimap$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/multimap/Multimap;Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class dev/ajthom/kollections/multimap/MultimapsKt {
+	public static final fun asMultimap (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun asSetMultimap (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun buildMultimap (Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun buildSetMultimap (Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun emptyMultimap ()Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun emptySetMultimap ()Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun filter (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/jvm/functions/Function2;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun filter (Ldev/ajthom/kollections/multimap/Multimap;Lkotlin/jvm/functions/Function2;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun filter (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/jvm/functions/Function2;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun filterKeys (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun filterKeys (Ldev/ajthom/kollections/multimap/Multimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun filterKeys (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun filterValues (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun filterValues (Ldev/ajthom/kollections/multimap/Multimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun filterValues (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun inverse (Ldev/ajthom/kollections/multimap/ListMultimap;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun inverse (Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun inverse (Ldev/ajthom/kollections/multimap/SetMultimap;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun isNotEmpty (Ldev/ajthom/kollections/multimap/Multimap;)Z
+	public static final fun iterator (Ldev/ajthom/kollections/multimap/Multimap;)Ljava/util/Iterator;
+	public static final fun mapKeys (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun mapKeys (Ldev/ajthom/kollections/multimap/Multimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun mapKeys (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun minus (Ldev/ajthom/kollections/multimap/ListMultimap;Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun minus (Ldev/ajthom/kollections/multimap/ListMultimap;Ljava/lang/Object;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun minus (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun minus (Ldev/ajthom/kollections/multimap/SetMultimap;Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun minus (Ldev/ajthom/kollections/multimap/SetMultimap;Ljava/lang/Object;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun minus (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun minusAssign (Ldev/ajthom/kollections/multimap/MutableMultimap;Ljava/lang/Iterable;)V
+	public static final fun minusAssign (Ldev/ajthom/kollections/multimap/MutableMultimap;Ljava/lang/Object;)V
+	public static final fun minusAssign (Ldev/ajthom/kollections/multimap/MutableMultimap;Lkotlin/Pair;)V
+	public static final fun multimapOf (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun multimapOf ([Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun multimapWith (Ljava/lang/Iterable;Ldev/ajthom/kollections/multimap/MutableMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/MutableMultimap;
+	public static final fun multimapWith (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun multimapWith (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun mutableMultimapOf ([Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/MutableListMultimap;
+	public static final fun mutableSetMultimapOf ([Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/MutableSetMultimap;
+	public static final fun orEmpty (Ldev/ajthom/kollections/multimap/ListMultimap;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun orEmpty (Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/Multimap;
+	public static final fun orEmpty (Ldev/ajthom/kollections/multimap/SetMultimap;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun plus (Ldev/ajthom/kollections/multimap/ListMultimap;Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun plus (Ldev/ajthom/kollections/multimap/ListMultimap;Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun plus (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun plus (Ldev/ajthom/kollections/multimap/SetMultimap;Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun plus (Ldev/ajthom/kollections/multimap/SetMultimap;Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun plus (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun plusAssign (Ldev/ajthom/kollections/multimap/MutableMultimap;Ldev/ajthom/kollections/multimap/Multimap;)V
+	public static final fun plusAssign (Ldev/ajthom/kollections/multimap/MutableMultimap;Ljava/lang/Iterable;)V
+	public static final fun plusAssign (Ldev/ajthom/kollections/multimap/MutableMultimap;Lkotlin/Pair;)V
+	public static final fun setMultimapOf (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun setMultimapOf ([Lkotlin/Pair;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun toMultimap (Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun toMultimap (Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun toMultimap (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun toMutableMultimap (Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/MutableListMultimap;
+	public static final fun toMutableMultimap (Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/MutableListMultimap;
+	public static final fun toMutableMultimap (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/MutableListMultimap;
+	public static final fun toMutableSetMultimap (Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/MutableSetMultimap;
+	public static final fun toMutableSetMultimap (Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/MutableSetMultimap;
+	public static final fun toMutableSetMultimap (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/MutableSetMultimap;
+	public static final fun toSetMultimap (Ldev/ajthom/kollections/multimap/Multimap;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun toSetMultimap (Ljava/lang/Iterable;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun toSetMultimap (Ljava/util/Map;)Ldev/ajthom/kollections/multimap/SetMultimap;
+	public static final fun transformValues (Ldev/ajthom/kollections/multimap/ListMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun transformValues (Ldev/ajthom/kollections/multimap/Multimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/ListMultimap;
+	public static final fun transformValues (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/multimap/SetMultimap;
+}
+
+public abstract interface class dev/ajthom/kollections/multimap/MutableListMultimap : dev/ajthom/kollections/multimap/ListMultimap, dev/ajthom/kollections/multimap/MutableMultimap {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/List;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getValues ()Ljava/util/Collection;
+	public abstract fun remove (Ljava/lang/Object;)Ljava/util/List;
+	public abstract fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/List;
+}
+
+public final class dev/ajthom/kollections/multimap/MutableListMultimap$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/multimap/MutableListMultimap;Lkotlin/jvm/functions/Function2;)V
+}
+
+public abstract interface class dev/ajthom/kollections/multimap/MutableMultimap : dev/ajthom/kollections/multimap/Multimap {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun clear ()V
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/Collection;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getFlatValues ()Ljava/util/Collection;
+	public abstract fun getKeys ()Ljava/util/Set;
+	public abstract fun getSize ()I
+	public abstract fun getValues ()Ljava/util/Collection;
+	public abstract fun put (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public abstract fun putAll (Ldev/ajthom/kollections/multimap/Multimap;)Z
+	public abstract fun putAll (Ljava/lang/Object;Ljava/lang/Iterable;)Z
+	public abstract fun putAll (Ljava/util/Map;)Z
+	public abstract fun remove (Ljava/lang/Object;)Ljava/util/Collection;
+	public abstract fun remove (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public abstract fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Collection;
+}
+
+public final class dev/ajthom/kollections/multimap/MutableMultimap$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/multimap/MutableMultimap;Lkotlin/jvm/functions/Function2;)V
+}
+
+public abstract interface class dev/ajthom/kollections/multimap/MutableSetMultimap : dev/ajthom/kollections/multimap/MutableMultimap, dev/ajthom/kollections/multimap/SetMultimap {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/Set;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getValues ()Ljava/util/Collection;
+	public abstract fun remove (Ljava/lang/Object;)Ljava/util/Set;
+	public abstract fun replaceValues (Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Set;
+}
+
+public final class dev/ajthom/kollections/multimap/MutableSetMultimap$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/multimap/MutableSetMultimap;Lkotlin/jvm/functions/Function2;)V
+}
+
+public abstract interface class dev/ajthom/kollections/multimap/SetMultimap : dev/ajthom/kollections/multimap/Multimap {
+	public abstract fun asMap ()Ljava/util/Map;
+	public abstract fun get (Ljava/lang/Object;)Ljava/util/Set;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getValues ()Ljava/util/Collection;
+}
+
+public final class dev/ajthom/kollections/multimap/SetMultimap$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/multimap/SetMultimap;Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class dev/ajthom/kollections/multiset/LinkedHashMultiset : kotlin/collections/AbstractMutableCollection, dev/ajthom/kollections/multiset/MutableMultiset {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Iterable;)V
+	public fun add (Ljava/lang/Object;)Z
+	public fun add (Ljava/lang/Object;I)I
+	public fun clear ()V
+	public fun contains (Ljava/lang/Object;)Z
+	public fun containsAll (Ljava/util/Collection;)Z
+	public fun count (Ljava/lang/Object;)I
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getElementSet ()Ljava/util/Set;
+	public fun getEntries ()Ljava/util/Set;
+	public fun getSize ()I
+	public fun hashCode ()I
+	public fun isEmpty ()Z
+	public fun iterator ()Ljava/util/Iterator;
+	public fun remove (Ljava/lang/Object;)Z
+	public fun remove (Ljava/lang/Object;I)I
+	public fun removeAll (Ljava/util/Collection;)Z
+	public fun retainAll (Ljava/util/Collection;)Z
+	public fun setCount (Ljava/lang/Object;I)I
+	public fun setCount (Ljava/lang/Object;II)Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class dev/ajthom/kollections/multiset/Multiset : java/util/Collection, kotlin/jvm/internal/markers/KMappedMarker {
+	public abstract fun count (Ljava/lang/Object;)I
+	public abstract fun getElementSet ()Ljava/util/Set;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun getSize ()I
+}
+
+public final class dev/ajthom/kollections/multiset/Multiset$Entry {
+	public fun <init> (Ljava/lang/Object;I)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()I
+	public final fun copy (Ljava/lang/Object;I)Ldev/ajthom/kollections/multiset/Multiset$Entry;
+	public static synthetic fun copy$default (Ldev/ajthom/kollections/multiset/Multiset$Entry;Ljava/lang/Object;IILjava/lang/Object;)Ldev/ajthom/kollections/multiset/Multiset$Entry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCount ()I
+	public final fun getElement ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/ajthom/kollections/multiset/MultisetsKt {
+	public static final fun emptyMultiset ()Ldev/ajthom/kollections/multiset/Multiset;
+	public static final fun multisetOf ([Ljava/lang/Object;)Ldev/ajthom/kollections/multiset/Multiset;
+	public static final fun mutableMultisetOf ([Ljava/lang/Object;)Ldev/ajthom/kollections/multiset/MutableMultiset;
+	public static final fun toMultiset (Ljava/lang/Iterable;)Ldev/ajthom/kollections/multiset/Multiset;
+	public static final fun toMultiset (Ljava/util/Map;)Ldev/ajthom/kollections/multiset/Multiset;
+	public static final fun toMutableMultiset (Ljava/lang/Iterable;)Ldev/ajthom/kollections/multiset/MutableMultiset;
+}
+
+public abstract interface class dev/ajthom/kollections/multiset/MutableMultiset : dev/ajthom/kollections/multiset/Multiset, java/util/Collection, kotlin/jvm/internal/markers/KMutableCollection {
+	public abstract fun add (Ljava/lang/Object;I)I
+	public abstract fun getElementSet ()Ljava/util/Set;
+	public abstract fun getEntries ()Ljava/util/Set;
+	public abstract fun remove (Ljava/lang/Object;I)I
+	public abstract fun setCount (Ljava/lang/Object;I)I
+	public abstract fun setCount (Ljava/lang/Object;II)Z
+}
+
+public final class dev/ajthom/kollections/set/ImmutableSet {
+	public static final field INSTANCE Ldev/ajthom/kollections/set/ImmutableSet;
+	public static final fun copyOf (Ljava/lang/Iterable;)Ljava/util/Set;
+	public static final fun of ()Ljava/util/Set;
+	public static final fun of (Ljava/lang/Object;)Ljava/util/Set;
+	public static final fun of ([Ljava/lang/Object;)Ljava/util/Set;
+}
+
+public final class dev/ajthom/kollections/set/Sets {
+	public static final field INSTANCE Ldev/ajthom/kollections/set/Sets;
+	public static final fun cartesianProduct (Ljava/util/List;)Ljava/util/Set;
+	public static final fun cartesianProduct ([Ljava/util/Set;)Ljava/util/Set;
+	public static final fun combinations (Ljava/util/Set;I)Ljava/util/Set;
+	public static final fun difference (Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;
+	public static final fun intersection (Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;
+	public static final fun powerSet (Ljava/util/Set;)Ljava/util/Set;
+	public static final fun symmetricDifference (Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;
+	public static final fun union (Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;
+}
+
+public abstract class dev/ajthom/kollections/table/AbstractTable : dev/ajthom/kollections/table/Table {
+	public fun <init> ()V
+	public fun cellSet ()Ljava/util/Set;
+	public fun column (Ljava/lang/Object;)Ljava/util/Map;
+	public fun columnKeySet ()Ljava/util/Set;
+	public fun columnMap ()Ljava/util/Map;
+	public fun contains (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public fun containsColumn (Ljava/lang/Object;)Z
+	public fun containsRow (Ljava/lang/Object;)Z
+	public fun containsValue (Ljava/lang/Object;)Z
+	public fun equals (Ljava/lang/Object;)Z
+	public fun forEach (Lkotlin/jvm/functions/Function3;)V
+	public fun get (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	protected abstract fun getRows ()Ljava/util/Map;
+	public fun getSize ()I
+	public fun hashCode ()I
+	public fun isEmpty ()Z
+	public fun row (Ljava/lang/Object;)Ljava/util/Map;
+	public fun rowKeySet ()Ljava/util/Set;
+	public fun rowMap ()Ljava/util/Map;
+	public fun toString ()Ljava/lang/String;
+	public fun transpose ()Ldev/ajthom/kollections/table/Table;
+	public fun values ()Ljava/util/Collection;
+}
+
+public class dev/ajthom/kollections/table/DelegatingMutableTable : dev/ajthom/kollections/table/AbstractTable, dev/ajthom/kollections/table/MutableTable {
+	public fun <init> (Ljava/util/Map;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Ljava/util/Map;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun clear ()V
+	protected fun getRows ()Ljava/util/Map;
+	public fun put (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun putAll (Ldev/ajthom/kollections/table/Table;)V
+	public fun remove (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun row (Ljava/lang/Object;)Ljava/util/Map;
+	public fun rowKeySet ()Ljava/util/Set;
+	public fun rowMap ()Ljava/util/Map;
+	public fun transpose ()Ldev/ajthom/kollections/table/MutableTable;
+	public synthetic fun transpose ()Ldev/ajthom/kollections/table/Table;
+}
+
+public class dev/ajthom/kollections/table/DelegatingTable : dev/ajthom/kollections/table/AbstractTable {
+	public fun <init> (Ljava/util/Map;)V
+	protected fun getRows ()Ljava/util/Map;
+}
+
+public abstract interface class dev/ajthom/kollections/table/MutableTable : dev/ajthom/kollections/table/Table {
+	public abstract fun cellSet ()Ljava/util/Set;
+	public abstract fun clear ()V
+	public abstract fun column (Ljava/lang/Object;)Ljava/util/Map;
+	public abstract fun columnKeySet ()Ljava/util/Set;
+	public abstract fun columnMap ()Ljava/util/Map;
+	public abstract fun put (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun putAll (Ldev/ajthom/kollections/table/Table;)V
+	public abstract fun remove (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun row (Ljava/lang/Object;)Ljava/util/Map;
+	public abstract fun rowKeySet ()Ljava/util/Set;
+	public abstract fun rowMap ()Ljava/util/Map;
+	public abstract fun transpose ()Ldev/ajthom/kollections/table/MutableTable;
+	public abstract fun values ()Ljava/util/Collection;
+}
+
+public final class dev/ajthom/kollections/table/MutableTable$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/table/MutableTable;Lkotlin/jvm/functions/Function3;)V
+}
+
+public final class dev/ajthom/kollections/table/SimpleTable : dev/ajthom/kollections/table/DelegatingMutableTable {
+	public fun <init> ()V
+}
+
+public abstract interface class dev/ajthom/kollections/table/Table {
+	public abstract fun cellSet ()Ljava/util/Set;
+	public abstract fun column (Ljava/lang/Object;)Ljava/util/Map;
+	public abstract fun columnKeySet ()Ljava/util/Set;
+	public abstract fun columnMap ()Ljava/util/Map;
+	public abstract fun contains (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public abstract fun containsColumn (Ljava/lang/Object;)Z
+	public abstract fun containsRow (Ljava/lang/Object;)Z
+	public abstract fun containsValue (Ljava/lang/Object;)Z
+	public fun forEach (Lkotlin/jvm/functions/Function3;)V
+	public abstract fun get (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getSize ()I
+	public abstract fun isEmpty ()Z
+	public abstract fun row (Ljava/lang/Object;)Ljava/util/Map;
+	public abstract fun rowKeySet ()Ljava/util/Set;
+	public abstract fun rowMap ()Ljava/util/Map;
+	public abstract fun transpose ()Ldev/ajthom/kollections/table/Table;
+	public abstract fun values ()Ljava/util/Collection;
+}
+
+public final class dev/ajthom/kollections/table/Table$DefaultImpls {
+	public static fun forEach (Ldev/ajthom/kollections/table/Table;Lkotlin/jvm/functions/Function3;)V
+}
+
+public final class dev/ajthom/kollections/table/TableCell {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/Object;
+	public final fun component3 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ldev/ajthom/kollections/table/TableCell;
+	public static synthetic fun copy$default (Ldev/ajthom/kollections/table/TableCell;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Ldev/ajthom/kollections/table/TableCell;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColumnKey ()Ljava/lang/Object;
+	public final fun getRowKey ()Ljava/lang/Object;
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/ajthom/kollections/table/TablesKt {
+	public static final fun asTable (Ldev/ajthom/kollections/table/MutableTable;)Ldev/ajthom/kollections/table/Table;
+	public static final fun asTable (Ljava/util/Map;)Ldev/ajthom/kollections/table/Table;
+	public static final fun buildTable (Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/table/Table;
+	public static final fun emptyTable ()Ldev/ajthom/kollections/table/Table;
+	public static final fun filter (Ldev/ajthom/kollections/table/Table;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/table/Table;
+	public static final fun isNotEmpty (Ldev/ajthom/kollections/table/Table;)Z
+	public static final fun mapValues (Ldev/ajthom/kollections/table/Table;Lkotlin/jvm/functions/Function1;)Ldev/ajthom/kollections/table/Table;
+	public static final fun mutableTableOf ([Lkotlin/Triple;)Ldev/ajthom/kollections/table/MutableTable;
+	public static final fun orEmpty (Ldev/ajthom/kollections/table/Table;)Ldev/ajthom/kollections/table/Table;
+	public static final fun set (Ldev/ajthom/kollections/table/MutableTable;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+	public static final fun size (Ldev/ajthom/kollections/table/Table;)I
+	public static final fun tableOf ([Lkotlin/Triple;)Ldev/ajthom/kollections/table/Table;
+	public static final fun toMutableTable (Ldev/ajthom/kollections/table/Table;)Ldev/ajthom/kollections/table/MutableTable;
+	public static final fun toMutableTable (Ljava/lang/Iterable;)Ldev/ajthom/kollections/table/MutableTable;
+	public static final fun toTable (Ldev/ajthom/kollections/table/Table;)Ldev/ajthom/kollections/table/Table;
+	public static final fun toTable (Ljava/lang/Iterable;)Ldev/ajthom/kollections/table/Table;
+	public static final fun toTable (Ljava/util/Map;)Ldev/ajthom/kollections/table/Table;
+}
+
